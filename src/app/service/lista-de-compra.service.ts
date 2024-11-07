@@ -27,11 +27,25 @@ export class ListaDeCompraService {
     },
   ]
 
-  constructor() {
-    console.log('Instanciando dependências necessárias para o serviço.');
-  }
+  constructor() { }
 
   getListaDeCompra(){
     return this.listaDeCompra;
+  }
+
+  criarItem(nomeDoItem: string){
+    const id = this.listaDeCompra.length + 1;
+    const item = {
+      id: id,
+      nome: nomeDoItem,
+      data: new Date().toLocaleString('pt-BR'),
+      comprado: false
+    }
+    return item
+  }
+
+  adicionarNaLista(nomeDoItem: string){
+    const item = this.criarItem(nomeDoItem)
+    this.listaDeCompra.push(item)
   }
 }
